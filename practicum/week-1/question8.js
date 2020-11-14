@@ -8,5 +8,14 @@ output: [1, 0, 1, 2]
 */
 
 var biggerAndEven = function(input) {
+    var output = [];
+    input.forEach((value, index) => {
+        let storeList = input.filter(comparedValue => (comparedValue > value &&
+            (comparedValue % 2 === 0)) );
 
+        // console.log(storeList);
+        output[index] = storeList.length;
+    })
+
+    return output;
 };

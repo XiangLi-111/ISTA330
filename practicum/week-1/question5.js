@@ -12,6 +12,50 @@ output: 3
 */
 
 var minimalReduction = function(n) {
+    let step = 1;
+    while(n > 2){
+        if( n % 4 === 0){
+            n = n/4;
+            step += 1;
+            // console.log(n, step);
+        }else if( n % 3 === 0 ){
+            n = n/3;
+            step += 1;
+            // console.log(n, step);
 
+        }else if( n % 4 === 1){
+            n -= 1;
+            n = n/4;
+            step += 2;
+            // console.log(n, step);
+
+        }else if( n % 3 === 1){
+            n -= 1;
+            n = n/3;
+            step += 2;
+            // console.log(n, step);
+
+        }else if( n % 4 === 2){
+            n -= 2;
+            n = n/4;
+            step += 3;
+            // console.log(n, step);
+
+        }
+        else if( n % 3 === 2){
+            n -= 2;
+            n = n/3;
+            step += 3;
+            // console.log(n, step);
+
+        }
+    }
+
+    if (n === 2){
+        return step + 1;
+    }else{
+        return step;
+    } 
 };
 
+// console.log('hi');

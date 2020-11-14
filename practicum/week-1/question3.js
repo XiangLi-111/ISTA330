@@ -9,5 +9,15 @@ There are 5 ordered pairs: (4, 6), (4, 9), (2, 6), (2, 9), (6, 9)
 */
 
 var numberOfOrderedPairs = function(input) {
+    let total = 0;
+    input.forEach((curr, currIndex)=>{
 
+        for (let index = currIndex+1; index < input.length; index++) {
+            if(curr < input[index]){
+                total += 1;
+            }            
+        };
+    });
+
+    return total;
 };

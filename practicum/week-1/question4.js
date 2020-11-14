@@ -11,5 +11,19 @@ The letters in A are guaranteed distinct, and all characters in A and B are lett
 */
 
 var howManyCommon = function(A, B) {
+    var a = A.split('');
+    var b = B.split('');
+    var c = a.filter(ele => {
+        return b.indexOf(ele) > -1}
+    );
+    var d = b.filter(ele => {
+        return a.indexOf(ele) > -1}
+    );
+    
+    if (c.length > d.length){
+        return c.length;
+    }else{
+        return d.length;
+    }
 
 };
