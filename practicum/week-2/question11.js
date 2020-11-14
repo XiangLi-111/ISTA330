@@ -14,5 +14,25 @@ output: 1
 */
 
 var d_count = function(input1, input2, d) {
+    count = 0;
 
+    input1.forEach( i => {
+
+        b = true;
+
+        input2.forEach(j => {
+            if (Math.abs(i-j) <= d){
+                b = false;
+                return;
+            }
+        })
+
+
+        b === true ? count += 1 : null; 
+                   
+
+
+    });
+
+    return count;
 };

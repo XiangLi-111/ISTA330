@@ -18,6 +18,30 @@ output: true
 
 var isMonotonic = function(input) {
 
+    b = true;
+    extreme = input[0];
+    
+    if(input[1] >= extreme){
+        min = extreme;
+        input.forEach(element => {
+            if(element < min){b = false;}
+            min = element;
+            });
+    }else{
+        max = extreme;
+        input.forEach(element => {
+            if(element > max){b = false;}
+            max = element;
+            // console.log(max, element);
+        });
+    }
+
+   
+
+    return b;
+
+
+
 };
 
 console.log('hi');

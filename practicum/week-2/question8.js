@@ -14,4 +14,16 @@ output: 3
 
 var d_integer = function(input) {
 
+    max = -1;
+
+    input.forEach((value, index) =>{
+        newList = input.filter(ele => ele === value);
+        // console.log(newList);
+
+        newList.length === value && value > max ? max = value : null;
+
+
+    })
+    return max;
+
 };

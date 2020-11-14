@@ -14,4 +14,13 @@ Example:
 
 var hasDuplicates = function(input) {
 
+    // console.log(input);
+    var set = new Set(input);
+    // console.log(Array.from(set))
+    return !(Array.from(set).length===input.length);
+
+
+
+
+
 };

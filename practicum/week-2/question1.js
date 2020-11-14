@@ -9,6 +9,27 @@ is at least twice as much as every other number
          output: true
 */
 
-var largestNumberIsAtLeastTwice = function(input) {
-   
+var largestNumberIsAtLeastTwice = function (input) {
+  let max = 0;
+  let maxIndex = 0;
+  input.forEach((value, index) => {
+    if (value > max) {
+      max = value;
+      maxIndex = index;
+    }
+  });
+
+//   console.log(max, maxIndex);
+
+  let newList = input.filter((value, index) => index !== maxIndex);
+  let res = true;
+
+  newList.map(ele => {
+        ele * 2 > max ? (
+            res = false
+        ) : null;
+  })
+
+  return res;
+
 };
