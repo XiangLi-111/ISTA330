@@ -10,4 +10,19 @@ output: true
 
 var kStepAway = function(input, k) {
 
+    b = true;
+
+    input.forEach((value, index) =>{
+        if(value === 1){
+            for (let j = index +1; j < index+k+1; j++) {
+                if(input[j] === 1){
+                    b = false;
+                    break;
+                }                
+            }
+        }
+    })
+
+    return b;
+
 };

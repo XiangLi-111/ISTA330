@@ -13,5 +13,25 @@ output: [0,0,1,1,2,2]
 */
 
 var sortColors = function(input) {
+    let redCount=0;
+    let whiteCount=0;
+    let blueCount=0;
+    input.forEach( i => {
+        // console.log(i);
+        if(i==0) {redCount +=1; }
+        else if(i==1) {whiteCount++;}
+        else if(i==2) {blueCount++}
+    });
+    
 
-};
+    // console.log(redCount,whiteCount, blueCount);
+
+    for(let i=0;i < input.length;i++){
+        if(i<redCount){ input[i]=0;}
+        else if(i<redCount+whiteCount) {input[i]=1;}
+        else 
+           { input[i]=2;}
+    }
+
+    return input;
+}

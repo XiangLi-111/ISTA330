@@ -10,6 +10,21 @@ output: [24,12,8,6]
 */
 
 var productOfOthers = function(input) {
-
+    var res = [];
+    var totalProduct = 1;
+    for(var i = 0; i < input.length; i++){
+      totalProduct = totalProduct * input[i];
+    }
+    for(var i = 0; i < input.length; i++){
+      var timesSubstracted = 0;
+      var divisor = input[i];
+      var dividend = totalProduct;
+      while(divisor <= dividend){
+        dividend = dividend - divisor;
+        timesSubstracted++;
+      }
+      res.push(timesSubstracted);
+    }
+    return res;
 };
 

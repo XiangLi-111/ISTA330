@@ -20,5 +20,31 @@ Return the number of teams you can form given the conditions.
 */
 
 var howManyTeams = function(input) {
+
+        let count = 0;
+
+        // console.log(input);
+
+        for (let i = 0; i < input.length; i++) {
+        
+                for (let j = i+1; j < input.length; j++) {
+                        
+                        if(input[i] >= input[j]){
+                                continue;
+                        }else{
+
+                                for (let k = j+1; k < input.length; k++) {
+
+                                        if(input[j] < input[k]){
+                                                count+=1;
+                                        }
+                                }
+                        }
+                }
+
+                
+        }
+
+        return count;
    
 };

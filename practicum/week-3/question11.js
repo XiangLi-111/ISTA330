@@ -36,4 +36,31 @@ output: 4
 
 var romanToInteger = function(s) {
 
+    let arr = s.replace(/IV/g,"4,")
+	arr = arr.replace(/IX/g,"9,")
+	arr = arr.replace(/XL/g,"40,")
+	arr = arr.replace(/XC/g, "90,")
+	arr = arr.replace(/CD/g, "400,")
+	arr = arr.replace(/CM/g, "900,")
+	arr = arr.replace(/I/g, "1,")
+	arr = arr.replace(/V/g, "5,")
+	arr = arr.replace(/X/g, "10,")
+	arr = arr.replace(/L/g, "50,")
+	arr = arr.replace(/C/g, "100,")
+	arr = arr.replace(/D/g, "500,")
+    arr = arr.replace(/M/g, "1000,")
+    
+    let trr = arr.split(',') 
+ 
+	var s = 0;
+ 
+	for(let i= 0; i<trr.length;i++){
+ 
+		s+=Number(trr[i])
+ 
+	}
+	return s
+
+
+
 };

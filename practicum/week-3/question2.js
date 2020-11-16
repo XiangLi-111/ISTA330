@@ -11,6 +11,18 @@ Example: input: [19,3,2,10,8,2,3,5]
           */
 
  var findDuplicates = function(input) {
+
+    res = [];
      
+    input.forEach(element => {
+        
+        let list = input.filter(ele => ele === element);
+
+        list.length > 1 ? res.push(element) : null;
+    });
+
+    let set = new Set(res);
+    // console.log();
+    return Array.from(set);
     
  };

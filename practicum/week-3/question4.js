@@ -18,6 +18,19 @@ Example:
 ]
 */
 
-var powerSet = function(input) {
+var powerSet = function (input) {
+
+  res = input.reduce(
+    (subsets, value) => subsets.concat(
+     subsets.map(set => [value,...set])
+    ),
+    [[]]
+  );
+
+  return res;
+
 
 };
+
+
+

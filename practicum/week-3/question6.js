@@ -25,5 +25,21 @@ output:  4
 */
 
 var longestNested = function(A) {
+     let appeared = [];
+     appeared.push(A[0]);
+
+     while(true){
+          let next = A[appeared[appeared.length-1]];
+          // console.log(next);
+          if(appeared.indexOf(next) === -1){
+               appeared.push(next);
+          }else{
+               break;
+          }
+     }
+
+     return appeared.length;
+     
+
 
 };
