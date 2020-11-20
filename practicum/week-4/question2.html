@@ -1,64 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
     <title>Document</title>
-</head>
+    <style>
+      .row {
+        margin: auto;
+        justify-content: center;
+        display: flex;
+      }
 
-<body>
+      img {
+        width: 158px;
+        height: 158px;
+        padding: 0px;
+      }
+
+      p {
+        text-align: center;
+        margin-top: -26px;
+      }
+    </style>
+     
+  </head>
+
+  <body>
     <div id="question">
-        1. Display the flowers as per question 1.<br />
-        2. Add the following functionality to the page:<br />
-        When users click on an image, the images should be
-        reorganized using the following rule:<br />
-        The flower that has been clicked goes to the first position in
-        the first row. The next position in the first row will
-        be the flower whose name is alphabeticlly right after the
-        name of the first one and so on for the other flowers.
-        <br />
-        So, for example if a user clicks on the flower lily,
-        then the flowers should be rearranged as:
-        <br />
-        <table>
-            <tr>
-                <td>
-                    lily
-                </td>
-                <td>
-                    rose
-                </td>
-                <td>
-                    sunflower
-                </td>
-                <td>
-                    tulip
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    water lily
-                </td>
-                <td>
-                    cherry blossom
-                </td>
-                <td>
-                    daffodil
-                </td>
-                <td>
-                    daisy
-                </td>
-            </tr>
-        </table>
-
+      1. Display the flowers as per question 1.<br />
+      2. Add the following functionality to the page:<br />
+      When users click on an image, the images should be reorganized using the
+      following rule:<br />
+      The flower that has been clicked goes to the first position in the first
+      row. The next position in the first row will be the flower whose name is
+      alphabeticlly right after the name of the first one and so on for the
+      other flowers.
+      <br />
+      So, for example if a user clicks on the flower lily, then the flowers
+      should be rearranged as:
+      <br />
+      <table>
+        <tr>
+          <td>lily</td>
+          <td>rose</td>
+          <td>sunflower</td>
+          <td>tulip</td>
+        </tr>
+        <tr>
+          <td>water lily</td>
+          <td>cherry blossom</td>
+          <td>daffodil</td>
+          <td>daisy</td>
+        </tr>
+      </table>
     </div>
-    <div id='flowersDiv'>
-
-    </div>
+    <div id="flowersDiv"></div>
     <script>
-        /*
+      /*
            1. Display the flowers as per question 1.
            2. Add the following functionality to the page:
               When users click on an image, the images should be 
@@ -75,32 +74,114 @@
         waterlily   cherryblossom  daffodil    daisy 
         
         */
-        class Flower {
-            constructor(name, pictureName) {
-                this.name = name;
-                this.picture = pictureName;
-            }
+      class Flower {
+        constructor(name, pictureName) {
+          this.name = name;
+          this.picture = pictureName;
         }
-        let daffodil = new Flower('Daffodil', 'daffodil.png');
-        let cherryblossom = new Flower('Cherry blossom', 'cherryblossom.png');
-        let lily = new Flower('Lily', 'lily.png');
-        let daisy = new Flower('Daisy', 'daisy.png');
-        let sunflower = new Flower('Sunflower', 'sunflower.png');
-        let tulip = new Flower('Tulip', 'tulip.png');
-        let rose = new Flower('Rose', 'rose.png');
-        let waterlily = new Flower('Water lily', 'waterlily.png');
+      }
+      let daffodil = new Flower("Daffodil", "daffodil.png");
+      let cherryblossom = new Flower("Cherry blossom", "cherryblossom.png");
+      let lily = new Flower("Lily", "lily.jpg");
+      let daisy = new Flower("Daisy", "daisy.jpg");
+      let sunflower = new Flower("Sunflower", "sunflower.png");
+      let tulip = new Flower("Tulip", "tulip.png");
+      let rose = new Flower("Rose", "rose.png");
+      let waterlily = new Flower("Water lily", "waterlily.png");
 
-        let flowers = [
-            daffodil,
-            cherryblossom,
-            lily,
-            daisy,
-            sunflower,
-            tulip,
-            rose,
-            waterlily
-        ];
+      let flowers = [
+        daffodil,
+        cherryblossom,
+        lily,
+        daisy,
+        sunflower,
+        tulip,
+        rose,
+        waterlily,
+      ];
+
+      orderedList = [];
+      flowers.forEach((ele) => {
+        orderedList.push(ele.name);
+      });
+      orderedList.sort();
+
+      var flowersDiv = document.getElementById("flowersDiv");
+
+      var row1 = document.createElement("div");
+      row1.className = "row";
+      flowersDiv.appendChild(row1);
+
+      var row2 = document.createElement("div");
+      row2.className = "row";
+      flowersDiv.appendChild(row2);
+
+      const order = (arr) => {
+
+        row1.innerHTML = '';
+        row2.innerHTML = '';
+        for (let index = 0; index < arr.length - 4; index++) {
+          var container = document.createElement("div");
+          container.className = "container";
+
+          var img = document.createElement("img");
+          img.src = "images/" + arr[index].picture;
+          img.alt = arr[index].name;
+          img.onclick = (e) => ImgClick(e);
+          container.appendChild(img);
+
+          var z = document.createElement("p");
+          z.innerHTML = arr[index].name;
+          container.appendChild(z);
+
+          row1.appendChild(container);
+        }
+
+        for (let index = 4; index < arr.length; index++) {
+          var container = document.createElement("div");
+          container.className = "container";
+
+          var img = document.createElement("img");
+          img.src = "images/" + arr[index].picture;
+          img.alt = arr[index].name;
+          img.onclick = (e) => ImgClick(e);
+          container.appendChild(img);
+
+          var z = document.createElement("p");
+          z.innerHTML = arr[index].name;
+          container.appendChild(z);
+
+          row2.appendChild(container);
+        }
+      };
+
+      const ImgClick = (e) => {
+        let clickedImg = e.target.alt;
+        console.log(clickedImg);
+        console.log(orderedList);
+        let idx = orderedList.indexOf(clickedImg);
+        let length = orderedList.length;
+        orderedList = orderedList.concat(orderedList);
+        orderedList = orderedList.slice(idx, idx+length);
+        console.log(idx, orderedList);
+        newArr = [];
+
+        for (let index = 0; index < orderedList.length; index++) {
+             flowers.map((element)=>{
+                if(element.name === orderedList[index]){
+                    console.log(element);
+                    newArr.push(element);
+                }
+            });
+            // console.log( orderedList[index]);
+        }
+
+        console.log(newArr);
+
+        order(newArr);
+      };
+
+      order(flowers);
     </script>
-</body>
-
+  </body>
 </html>
